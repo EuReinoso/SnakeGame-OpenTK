@@ -34,6 +34,7 @@ namespace Snake_OpenTK
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
             snake.printSnake();
+            new Apple(10, 1.0f, 0.0f, 0.0f).printApple(ClientSize.Width,ClientSize.Height);
 
             SwapBuffers();
         }

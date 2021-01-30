@@ -9,7 +9,7 @@ namespace Snake_OpenTK
         
         static void Main(string[] args)
         {
-            new Game(400, 400,"Snake").Run(30);
+            new Game(300, 300,"Snake").Run(30);
         }
     }        
 }
