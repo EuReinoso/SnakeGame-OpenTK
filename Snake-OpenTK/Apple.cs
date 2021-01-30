@@ -18,14 +18,22 @@ namespace Snake_OpenTK
             this.b = b;
         }
 
-        public void printApple(int cliWidth, int cliHeight)
+        public int grid(int x)
+        {
+            return x /10 * 10;
+        }
+
+        public void newApple(int cliWidth, int cliHeight)
         {
             Random aux = new Random();
-            pos[0] = aux.Next(-cliWidth+ size/2,cliWidth - size/2);
-            pos[1] = aux.Next(-cliHeight + size/2, cliHeight - size/2);
+            pos[0] = grid(aux.Next(-cliWidth/2 + size/2, cliWidth/2 - size/2 ));
+            pos[1] = grid(aux.Next(-cliHeight/2 + size/2 , cliHeight/2 - size/2));
 
-            new DrawRect(size, size,pos[0] ,pos[1], r, g, b).printRect();
+        }
 
+        public void showApple()
+        {
+           new DrawRect(size, size, pos[0], pos[1], r, g, b).printRect();
         }
 
     }

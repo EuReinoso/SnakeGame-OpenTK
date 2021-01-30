@@ -12,17 +12,27 @@ namespace Snake_OpenTK
         public int width = new int();
         public string title = null;
 
+        public bool start = new bool();
+
         public Snake snake = new Snake(10, 0, 0, 1.0f, 1.0f, 1.0f);
+        public Apple apple = new Apple(10, 1.0f, 0.0f, 0.0f);
         public Game(int width,int height,string title):base(width, height, GraphicsMode.Default, title)
         {
             this.title = title;
             this.width = width;
             this.height = height;
+            this.start = false;
         }
 
+
         
+        protected override void OnLoad(EventArgs e)
+        {
+            apple.newApple(ClientSize.Width, ClientSize.Height);
 
-
+            base.OnLoad(e);
+        }
+        
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             GL.Viewport(0, 0, ClientSize.Width, ClientSize.Height);
@@ -34,7 +44,9 @@ namespace Snake_OpenTK
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
             snake.printSnake();
-            new Apple(10, 1.0f, 0.0f, 0.0f).printApple(ClientSize.Width,ClientSize.Height);
+            apple.showApple();
+            
+            
 
             SwapBuffers();
         }
@@ -43,7 +55,10 @@ namespace Snake_OpenTK
         {
             snake.move();
             snake.setDir();
+            snake.appleColission(apple, ClientSize.Width, ClientSize.Height);
         }
+
+        
 
     }
 }

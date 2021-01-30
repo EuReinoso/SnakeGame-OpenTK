@@ -14,6 +14,7 @@ namespace Snake_OpenTK
         public float b = new float();
         public int[] pos = new int[2];
         public int snakeDir = new int();
+        public int score = new int();
 
         
 
@@ -23,8 +24,8 @@ namespace Snake_OpenTK
             this.r = r;
             this.g = g;
             this.b = b;
-            this.pos[0] = x;
-            this.pos[1] = y;
+            this.pos[0] = grid(x);
+            this.pos[1] = grid(y);
             this.snakeDir = (int)Dir.right;
         }
 
@@ -38,19 +39,19 @@ namespace Snake_OpenTK
         {
             if (snakeDir == (int)Dir.right)
             {
-                pos[0] += size / 2;
+                pos[0] += size;
             }
             if (snakeDir == (int)Dir.down)
             {
-                pos[1] -= size / 2;
+                pos[1] -= size;
             }
             if (snakeDir == (int)Dir.left)
             {
-                pos[0] -= size / 2;
+                pos[0] -= size;
             }
             if (snakeDir == (int)Dir.up)
             {
-                pos[1] += size / 2;
+                pos[1] += size;
             }
 
         }
@@ -73,6 +74,20 @@ namespace Snake_OpenTK
             {
                 snakeDir = (int)Dir.up;
             }
+        }
+
+        public void appleColission(Apple apple, int cliWidth, int cliHeight)
+        {
+            if (pos[0] == apple.pos[0] && pos[1] == apple.pos[1])
+            {
+                apple.newApple(cliWidth,cliHeight);
+                score++;
+            }
+        }
+
+        public int grid(int x)
+        {
+            return x / 10 * 10;
         }
     }
 }
