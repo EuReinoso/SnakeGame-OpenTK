@@ -32,6 +32,8 @@ namespace Snake_OpenTK
 
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
+            new Snake(10, 1.0f, 1.0f, 1.0f).printSnake();
+
             SwapBuffers();
         }
 
@@ -39,5 +41,6 @@ namespace Snake_OpenTK
         {
             
         }
+
     }
 }
