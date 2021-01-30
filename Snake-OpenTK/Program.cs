@@ -1,15 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OpenTK;
+using OpenTK.Graphics.OpenGL;
 
 namespace Snake_OpenTK
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
+            new Game(400, 400,"Snake").Run();
         }
-    }
+    }        
 }
+
+
