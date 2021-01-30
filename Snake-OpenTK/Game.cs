@@ -12,6 +12,7 @@ namespace Snake_OpenTK
         public int width = new int();
         public string title = null;
 
+        public Snake snake = new Snake(10, 0, 0, 1.0f, 1.0f, 1.0f);
         public Game(int width,int height,string title):base(width, height, GraphicsMode.Default, title)
         {
             this.title = title;
@@ -32,14 +33,15 @@ namespace Snake_OpenTK
 
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            new Snake(10, 1.0f, 1.0f, 1.0f).printSnake();
+            snake.printSnake();
 
             SwapBuffers();
         }
 
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
-            
+            snake.move();
+            snake.setDir();
         }
 
     }
